@@ -17,6 +17,9 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
   let kOpenCellHeight: CGFloat = 240
   var cellHeights = [CGFloat]()
   var passwords = [Password]()
+    
+    var currentUserCollectionRef: CollectionReference!
+    var passwordListener: ListenerRegistration!
 
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -34,6 +37,10 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+       // try! Auth.auth().signOut()
+        
+        
         if (Auth.auth().currentUser == nil) {
             //Sign in
             Auth.auth().signInAnonymously { (user, error) in
@@ -50,8 +57,34 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        passwordListener.remove()
+    }
+    
     func setupFirebaseObservers() {
         guard let currentUser = Auth.auth().currentUser else { return }
+        print(currentUser.uid)
+        currentUserCollectionRef = Firestore.firestore().collection(currentUser.uid)
+        
+        //Temp test
+        print("Fake data to learn")
+        currentUserCollectionRef.addDocument(data: ["service": "Hardcoded service",
+                                                    "username": "fisherds",
+                                                    "password": "123"]).addSnapshotListener { (docSnapshot, error) in
+                                                        if (error == nil) {
+                                                            print("It worked!")
+                                                        } else {
+                                                            print("Error: \(error!)")
+                                                        }
+        }
+    
+        
+        
+        
+    
+    
+    
     }
 
   func setUpFab() {
@@ -136,9 +169,14 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
       let newPassword = Password(service: serviceTextField.text!,
                                  username: usernameTextField.text!,
                                  password: passwordTextField.text!)
-      self.passwords.insert(newPassword, at: 0)
-      self.cellHeights.insert(self.kCloseCellHeight, at: 0)
-      self.tableView.reloadData()
+      //self.passwords.insert(newPassword, at: 0)
+      //self.cellHeights.insert(self.kCloseCellHeight, at: 0)
+      //self.tableView.reloadData()
+        self.currentUserCollectionRef.addDocument(data: newPassword.data) {
+            err in if let err = err {
+                print("error adding document \(err)")
+            }
+        }
     }
     alertController.addAction(cancelAction)
     alertController.addAction(defaultAction)
