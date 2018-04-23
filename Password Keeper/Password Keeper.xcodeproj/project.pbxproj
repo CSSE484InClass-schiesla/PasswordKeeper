@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ABE1C4F208E2D84000F5569 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABE1C4E208E2D83000F5569 /* GoogleService-Info.plist */; };
 		35F203AD85E30F125A705198 /* Pods_Password_Keeper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AE43B8961CC4D47AA2389F /* Pods_Password_Keeper.framework */; };
 		FD789788207E58AD009B4DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789787207E58AD009B4DFC /* AppDelegate.swift */; };
 		FD78978D207E58AE009B4DFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD78978B207E58AD009B4DFC /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0ABE1C4E208E2D83000F5569 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51ACC313D1656AE8B34BA8FC /* Pods-Password Keeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Keeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Password Keeper/Pods-Password Keeper.release.xcconfig"; sourceTree = "<group>"; };
 		B5C3F6506BCBAF8D2AEA61F6 /* Pods-Password Keeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Password Keeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Password Keeper/Pods-Password Keeper.debug.xcconfig"; sourceTree = "<group>"; };
 		E2AE43B8961CC4D47AA2389F /* Pods_Password_Keeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Password_Keeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 				FD78978B207E58AD009B4DFC /* Main.storyboard */,
 				FD789791207E58AE009B4DFC /* Assets.xcassets */,
 				FD789793207E58AE009B4DFC /* LaunchScreen.storyboard */,
+				0ABE1C4E208E2D83000F5569 /* GoogleService-Info.plist */,
 				FD789796207E58AE009B4DFC /* Info.plist */,
 				FD78979C207E5AC4009B4DFC /* AppNavBar.swift */,
 				FD78979E207E5C4C009B4DFC /* PasswordViewController.swift */,
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABE1C4F208E2D84000F5569 /* GoogleService-Info.plist in Resources */,
 				FD789795207E58AE009B4DFC /* LaunchScreen.storyboard in Resources */,
 				FD789792207E58AE009B4DFC /* Assets.xcassets in Resources */,
 				FD78978D207E58AE009B4DFC /* Main.storyboard in Resources */,
@@ -194,15 +198,35 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Password Keeper/Pods-Password Keeper-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -369,11 +393,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGL44JG796;
 				INFOPLIST_FILE = "Password Keeper/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.fisherds.Password-Keeper";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.schiesla.Password-Keeper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -388,11 +409,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGL44JG796;
 				INFOPLIST_FILE = "Password Keeper/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.fisherds.Password-Keeper";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.schiesla.Password-Keeper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

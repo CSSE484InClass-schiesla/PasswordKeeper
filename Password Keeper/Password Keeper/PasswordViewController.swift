@@ -9,6 +9,7 @@
 import UIKit
 import FoldingCell
 import Material
+import Firebase
 
 class PasswordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
@@ -30,6 +31,28 @@ class PasswordViewController: UIViewController, UITableViewDataSource, UITableVi
     tableView.dataSource = self
     setUpFab()
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (Auth.auth().currentUser == nil) {
+            //Sign in
+            Auth.auth().signInAnonymously { (user, error) in
+                if error == nil {
+                    print("you are now signed in using Anonymouos auth. uid: \(user!.uid)")
+                } else {
+                    print("Error with annonymous auth: \(error!.localizedDescription)")
+                    self.setupFirebaseObservers()
+                }
+            }
+        } else {
+            print("you are signed in as: \(Auth.auth().currentUser!.uid)")
+            setupFirebaseObservers()
+        }
+    }
+    
+    func setupFirebaseObservers() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+    }
 
   func setUpFab() {
     let img: UIImage? = UIImage(named: "ic_add_white")

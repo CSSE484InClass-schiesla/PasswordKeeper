@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Programatically initialize the first view controller.
     window = UIWindow(frame: UIScreen.main.bounds)
-
-    let showLoginScreen = true
+    FirebaseApp.configure()
+    
+    let showLoginScreen = false
     if showLoginScreen {
       showLoginViewController();
     } else {
